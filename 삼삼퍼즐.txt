@@ -1,0 +1,383 @@
+10
+500
+1 1 1 1 6 
+2 2 2 2 6 
+3 3 3 3 6 
+4 4 4 4 6 
+5 5 5 5 0 
+5 6 2 
+3 6 5 
+1 1 6 
+500
+2 5 5 3 5 
+6 4 2 6 3 
+1 1 1 6 6 
+4 4 5 0 3 
+2 2 3 1 4 
+4 4 3 
+5 2 5 
+1 2 5 
+500
+4 4 2 3 1 
+4 5 4 6 0 
+2 6 2 1 3 
+5 6 1 1 3 
+6 5 3 5 2 
+1 3 6 
+6 5 4 
+4 3 1 
+500
+2 1 2 4 6 
+5 1 1 5 2 
+3 6 4 6 6 
+0 1 2 3 3 
+4 3 5 4 5 
+5 6 1 
+5 2 6 
+4 3 4 
+500
+1 6 3 1 4 
+4 5 5 3 1 
+3 3 4 1 2 
+2 2 4 5 5 
+6 6 6 2 0 
+2 3 6 
+1 3 2 
+5 3 5 
+500
+6 3 3 1 6 
+0 1 4 6 4 
+1 2 2 3 4 
+2 1 5 5 2 
+5 4 5 6 3 
+3 2 1 
+1 3 3 
+2 2 5 
+500
+0 5 2 6 1 
+6 2 2 3 3 
+2 4 3 4 5 
+1 4 1 6 1 
+5 3 5 6 4 
+2 5 5 
+4 2 4 
+6 6 5 
+500
+0 1 1 2 1 
+4 3 2 4 5 
+1 3 5 2 3 
+4 5 5 6 6 
+6 2 4 3 6 
+4 4 1 
+6 2 5 
+4 2 3 
+500
+4 1 3 5 5 
+5 6 4 6 1 
+2 1 3 6 6 
+3 2 4 2 4 
+0 5 1 2 3 
+4 5 2 
+4 2 1 
+5 6 6 
+500
+3 6 2 4 3 
+5 1 1 5 6 
+5 6 0 2 2 
+3 4 4 4 1 
+1 2 5 6 3 
+6 1 2 
+2 1 2 
+1 3 1 
+
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include<stdio.h>
+
+#define UP 0
+#define RIGHT 1
+#define DOWN 2
+#define LEFT 3
+
+
+extern void solve(int board[5][5], int pattern[3][3], int callCntLimit);
+
+static int orgBoard[5][5];
+static int orgPattern[3][3];
+static int emptyY, emptyX;
+static int callCnt;
+
+bool swap(int dir) {
+	int dy[4] = { -1, 0, 1, 0 };
+	int dx[4] = { 0, 1, 0, -1 };
+
+	++callCnt;
+
+	if (dir < UP || dir > LEFT) {
+		return false;
+	}
+
+	int newY = emptyY + dy[dir];
+	int newX = emptyX + dx[dir];
+
+	if (newY < 0 || newY >= 5 || newX < 0 || newX >= 5) {
+		return false;
+	}
+
+	orgBoard[emptyY][emptyX] = orgBoard[newY][newX];
+	orgBoard[newY][newX] = 0;
+	emptyY = newY;
+	emptyX = newX;
+
+	return true;
+}
+
+static bool run() {
+
+	int board[5][5];
+	int pattern[3][3];
+	int callCntLimit;
+
+	scanf("%d", &callCntLimit);
+
+	for (int i = 0; i < 5; ++i) {
+		for (int j = 0; j < 5; ++j) {
+			scanf("%d", &board[i][j]);
+
+			orgBoard[i][j] = board[i][j];
+
+			if (board[i][j] == 0) {
+				emptyY = i;
+				emptyX = j;
+			}
+		}
+	}
+
+	for (int i = 0; i < 3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			scanf("%d", &pattern[i][j]);
+
+			orgPattern[i][j] = pattern[i][j];
+		}
+	}
+
+	callCnt = 0;
+
+	solve(board, pattern, callCntLimit);
+
+	bool isCorrect = (callCnt <= callCntLimit);
+
+	for (int i = 0; i < 3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			if (orgBoard[i + 1][j + 1] != orgPattern[i][j]) {
+				isCorrect = false;
+			}
+		}
+	}
+
+	return isCorrect;
+}
+
+int main(void) {
+
+	setbuf(stdout, NULL);
+	// freopen("sample_input.txt", "r", stdin);
+
+	int T;
+	scanf("%d", &T);
+
+	for (int tc = 1; tc <= T; ++tc) {
+		printf("#%d %d\n", tc, run() ? 100 : 0);
+	}
+
+	return 0;
+}
+
+
+
+struct Point
+{
+    int y, x;
+};
+Point queue[200]; int front, end;
+int move[200], moveCnt;
+int dy[4] = { -1, 0, 1, 0 };
+int dx[4] = { 0, 1, 0, -1 };
+ 
+//Y0, X0 empty space (0) 
+int board[5][5], pattern[3][3], Y0, X0, Yt, Xt;
+//fixed for target
+int fixed[5][5], Visited[5][5];
+bool marked[5][5];
+ 
+extern bool swap(int dir);
+ 
+void mySwap(int dir) {
+    board[Y0][X0] = board[Y0 + dy[dir]][X0 + dx[dir]];
+    board[Y0 + dy[dir]][X0 + dx[dir]] = 0;
+ 
+    Y0 += dy[dir]; X0 += dx[dir];
+    swap(dir);
+}
+ 
+void backtrace(int ys, int xs, int ye, int xe, int mark) {
+    int ws = moveCnt;
+    while (!(ys == ye && xs == xe)) {
+        marked[ye][xe] = mark;
+        int dir = Visited[ye][xe];
+        move[moveCnt++] = dir;
+        ye -= dy[dir]; xe -= dx[dir];
+    }
+ 
+    //find the right way in the reverse way
+    int we = moveCnt;
+    for (int i = 0; i < (we - ws) / 2; i++) {
+        int t = move[ws + i];
+        move[ws + i] = move[we - i - 1];
+        move[we - i - 1] = t;
+    }
+}
+ 
+void realMove(int ys, int xs, int ye, int xe) {
+     
+    //set up start point
+    front = end = 0;
+    queue[0].y = ys;
+    queue[0].x = xs;
+ 
+    //check visited
+    while (front <= end) {
+        Point p = queue[front++];
+        for (int i = 0; i < 4; i++) {
+            int ny = p.y + dy[i];
+            int nx = p.x + dx[i];
+ 
+            if (0 <= ny && ny < 5 && 0 <= nx && nx < 5) { //range check
+                if (fixed[ny][nx] == 0 && Visited[ny][nx] == -1) {//fixed not && visited not
+                     
+                    ++end;
+                    queue[end].y = ny;
+                    queue[end].x = nx;
+                    Visited[ny][nx] = i; //direction
+                     
+                    if (ny == ye && nx == xe) 
+                        break;
+                }
+            }
+ 
+        }
+    }
+ 
+    backtrace(ys, xs, ye, xe, 0);
+}
+ 
+ 
+void findTarget(int ys, int xs, int ye, int xe, int c) {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            Visited[i][j] = -1;
+            marked[i][j] = 0;
+        }
+    }
+ 
+    Visited[ys][xs] = 0;
+ 
+    front = end = 0;
+    queue[0].y = ys;
+    queue[0].x = xs;
+ 
+    while (front <= end && Yt == -1 && Xt == -1) {
+        Point p = queue[front++];
+        int y = p.y, x = p.x;
+        for (int i = 0; i < 4; i++) {
+            int ny = y + dy[i];
+            int nx = x + dx[i];
+ 
+            if (0 <= ny && ny < 5 && 0 <= nx && nx < 5) { //range change
+                if (fixed[ny][nx] == 0 && Visited[ny][nx] == -1) {//fixed not && visited not
+ 
+                    ++end;
+                    queue[end].y = ny;
+                    queue[end].x = nx;
+                    Visited[ny][nx] = i; //direction
+ 
+                    if (board[ny][nx] == c) {
+                        Yt = ny, Xt = nx;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+     
+    moveCnt = 0;
+    backtrace(ys, xs, Yt, Xt, 1);
+}
+ 
+void puzzle(int y, int x, int c) {
+     
+    //initialize vistied matrix
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++)
+            Visited[i][j] = -1;
+    }
+ 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //move an empty space to pattern 
+    Visited[Y0][X0] = 0;
+    moveCnt = 0;
+    realMove(Y0, X0, y, x); // 이동 경로 찾기: 빈칸<->타켓
+    for (int i = 0; i < moveCnt; i++)
+        mySwap(move[i]);
+ 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //find the closest target
+    Yt = -1, Xt = -1;
+    findTarget(Y0, X0, Yt, Yt, c);
+ 
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) 
+            Visited[i][j] = marked[i][j] ? 1 : -1;
+    }
+    Visited[Yt][Xt] = 0;
+    //moveCnt = 0; do not need to intialize
+    realMove(Yt, Xt, Y0, X0);
+ 
+    //cycle
+    for (int i = 0; ; i = (i + 1) % moveCnt) {
+        mySwap(move[i]);
+        if (board[y][x] == c) return;
+    }
+}
+ 
+void solve(int orgBoard[5][5], int orgPattern[3][3], int callCntLimit) {
+    //initialize board 
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            marked[i][j] = fixed[i][j] = 0;
+            board[i][j] = orgBoard[i][j];
+ 
+            //remember an empty space
+            if (board[i][j] == 0) Y0 = i, X0 = j;
+        }
+    }
+    //initialize pattern
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            pattern[i][j] = orgPattern[i][j];
+        }
+    }
+ 
+    //start from pattern (1,1)
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+             
+            puzzle(i + 1, j + 1, pattern[i][j]);
+ 
+            fixed[i + 1][j + 1] = 1;
+        }
+    }
+}
