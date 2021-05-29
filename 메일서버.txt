@@ -1,0 +1,473 @@
+10 100
+13 1 10 3
+1 test_email_abcd 0 3 0 1 2
+1 test_email_abcd 0 2 2 3
+1 test_key_test_aaa 1 2 0 2
+2 2 3
+4 2 test 3
+3 2 test_email_abcd 2
+1 key_subject 3 2 0 1
+4 0 abcd 1
+1 subject_email 2 2 0 3
+4 0 sub 0
+3 2 dummy_age 0
+4 0 goto 0
+50 0 10 5 100 1 10 5 757147
+1 655243745
+1 167613747
+1 57644035
+1 473038164
+4 2 wrghwq 1
+1 448003465
+2 3 1
+1 950090227
+4 1 mjsra 1
+4 4 bsqbm 2
+4 3 wrghwq 1
+1 67346651
+3 6 473038164 0
+4 8 wrghwq 1
+1 374079501
+1 102755056
+4 9 dqofvv 1
+1 79942653
+1 137583463
+1 396056833
+4 6 qtttsdgc 1
+3 1 655243745 1
+4 1 kbxir 1
+1 543649337
+1 189920159
+4 3 esjrk 2
+4 1 kbxir 1
+1 213861390
+1 442531277
+2 1 5
+1 250902
+1 55521105
+3 7 655243745 1
+1 104482890
+2 3 5
+1 582531182
+3 2 543649337 0
+1 49267979
+3 6 396056833 1
+1 486774961
+4 2 wvvyiqda 1
+4 2 ewgrxfbnk 1
+2 2 5
+4 1 ewgrxfbnk 1
+2 9 5
+3 2 57644035 0
+1 479907209
+3 1 102755056 1
+1 278600080
+100 0 10 10 200 1 10 5 151375122
+1 129541125
+1 577996946
+1 357743628
+1 107799270
+1 41643110
+1 570931849
+1 238952995
+1 282437315
+1 7417125
+1 166351380
+4 7 fwuegd 1
+4 9 pzvnwzl 1
+1 299553233
+2 6 3
+1 47933175
+1 589381608
+4 3 rtzjcjmlh 1
+1 215014513
+4 4 tkaevzwv 1
+4 9 pzvnwzl 1
+3 6 570931849 0
+1 205166829
+3 8 357743628 1
+4 6 ilpxnyv 0
+3 9 357743628 0
+3 1 41643110 1
+3 4 299553233 1
+4 4 pijhntpqv 1
+4 7 yffwxtehex 1
+2 0 3
+4 4 gurszosxbb 1
+1 145642536
+1 767733792
+1 185927067
+1 355366237
+2 6 4
+3 8 205166829 1
+3 7 282437315 0
+1 563579659
+1 568489830
+3 7 563579659 1
+4 1 djycndyiq 1
+1 46933263
+4 0 yndpdqn 1
+3 0 563579659 1
+4 3 dyoig 1
+4 0 cxkquacoj 1
+4 8 nkvnvxbt 0
+4 8 zlmsfsja 1
+1 853719628
+3 9 185927067 0
+3 6 767733792 1
+4 0 cxkquacoj 1
+1 161301440
+1 333702888
+2 8 4
+4 7 jfqscx 2
+4 7 plpxvlnx 1
+4 9 bqswdvj 1
+4 3 fcepepzzvo 1
+2 0 5
+4 0 zlmsfsja 1
+3 1 145642536 1
+3 9 7417125 0
+1 292360323
+3 7 570931849 1
+1 130257781
+4 8 ugmhspghm 1
+1 285487137
+1 165679428
+1 317981616
+4 3 pbevwxgbg 1
+4 4 fgctio 1
+4 5 hjyigpxim 0
+1 43046640
+3 4 205166829 1
+1 2089471
+4 3 mmqbzzc 1
+2 6 9
+1 691024467
+1 580009947
+3 5 46933263 1
+3 3 129541125 0
+4 5 pghwjtq 1
+4 1 tkaevzwv 1
+3 7 43046640 0
+3 1 165679428 1
+4 3 mxksfma 1
+4 0 ditwsfr 1
+3 6 161301440 1
+3 4 285487137 1
+4 5 pghwjtq 1
+3 8 46933263 0
+4 5 ozuotlawf 1
+4 9 qjrfx 1
+3 7 853719628 0
+4 2 ngmkqolj 1
+1 204972838
+1 214874296
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdio.h>
+
+#define INIT         0
+#define SENDMAIL     1
+#define GETCOUNT     2
+#define DELETEMAIL   3
+#define SEARCHMAIL   4
+
+extern void init(int N, int K);
+extern void sendMail(char subject[], int uID, int cnt, int rIDs[]);
+extern int getCount(int uID);
+extern int deleteMail(int uID, char subject[]);
+extern int searchMail(int uID, char text[]);
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+#define MAX_WORD 10000
+static char Word[MAX_WORD][11];
+
+static int N, W, minR, maxR, SW;
+
+static int mSeed;
+static int pseudo_rand(void)
+{
+	mSeed = mSeed * 214013 + 2531011;
+	return (mSeed >> 16) & 0x7FFF;
+}
+
+static void make_string(int seed)
+{
+	mSeed = seed;
+
+	for (int i = 0; i < W; ++i) {
+		int length = 5 + pseudo_rand() % 6;
+		for (int k = 0; k < length; ++k) {
+			Word[i][k] = 'a' + pseudo_rand() % 26;
+		}
+		Word[i][length] = '\0';
+	}
+}
+
+static void send_mail(int seed)
+{
+	char str[200];
+	int pos = 0;
+
+	mSeed = seed;
+
+	int wcnt = 1 + pseudo_rand() % SW;
+	for (int i = 0; i < wcnt; ++i) {
+		int widx = pseudo_rand() % W;
+		for (int k = 0; k < 10; ++k) {
+			if (Word[widx][k] == '\0') break;
+			str[pos++] = Word[widx][k];
+		}
+		str[pos++] = ' ';
+	}
+	str[pos - 1] = '\0';
+
+	int uid = pseudo_rand() % N;
+	int rcnt = minR + pseudo_rand() % (maxR - minR + 1);
+	int rids[50];
+	for (int i = 0; i < rcnt; ++i) {
+		rids[i] = pseudo_rand() % N;
+	}
+
+	sendMail(str, uid, rcnt, rids);
+}
+
+static int delete_mail(int uid, int seed)
+{
+	char str[200];
+	int pos = 0;
+
+	mSeed = seed;
+
+	int wcnt = 1 + pseudo_rand() % SW;
+	for (int i = 0; i < wcnt; ++i) {
+		int widx = pseudo_rand() % W;
+		for (int k = 0; k < 10; ++k) {
+			if (Word[widx][k] == '\0') break;
+			str[pos++] = Word[widx][k];
+		}
+		str[pos++] = ' ';
+	}
+	str[pos - 1] = '\0';
+
+	return deleteMail(uid, str);
+}
+
+static int run(int answer)
+{
+	int Q, K, cmd, sample, seed, param1, param2, ret;
+	char str[30];
+
+	scanf("%d %d %d %d", &Q, &sample, &N, &K);
+	if (sample == 0) {
+		scanf("%d %d %d %d %d", &W, &minR, &maxR, &SW, &seed);
+		make_string(seed);
+	}
+
+	init(N, K);
+
+	for (int i = 1; i < Q; ++i) {
+		scanf("%d", &cmd);
+		switch (cmd) {
+		case SENDMAIL:
+			if (sample == 1) {
+				int uid, rcnt;
+				int rids[10];
+				scanf("%s %d %d", str, &uid, &rcnt);
+				for (int k = 0; k < rcnt; ++k) scanf("%d", &rids[k]);
+				for (int k = 0; k < 30; ++k) {
+					if (str[k] == '\0') break;
+					if (str[k] == '_') str[k] = ' ';
+				}
+				sendMail(str, uid, rcnt, rids);
+			}
+			else {
+				scanf("%d", &seed);
+				send_mail(seed);
+			}
+			break;
+		case GETCOUNT:
+			scanf("%d %d", &param1, &param2);
+			ret = getCount(param1);
+			if (ret != param2)
+				answer = 0;
+			break;
+		case DELETEMAIL:
+			if (sample == 1) {
+				int uid;
+				scanf("%d %s %d", &param1, str, &param2);
+				for (int k = 0; k < 30; ++k) {
+					if (str[k] == '\0') break;
+					if (str[k] == '_') str[k] = ' ';
+				}
+				ret = deleteMail(param1, str);
+				if (ret != param2)
+					answer = 0;
+			}
+			else {
+				scanf("%d %d %d", &param1, &seed, &param2);
+				ret = delete_mail(param1, seed);
+				if (ret != param2)
+					answer = 0;
+			}
+			break;
+		case SEARCHMAIL:
+			scanf("%d %s %d", &param1, str, &param2);
+			ret = searchMail(param1, str);
+			if (ret != param2)
+				answer = 0;
+			break;
+		default:
+			break;
+		}
+	}
+
+	return answer;
+}
+
+int main()
+{
+	setbuf(stdout, NULL);
+	//freopen("sample_input.txt", "r", stdin);
+
+	int T, Mark;
+	scanf("%d %d", &T, &Mark);
+
+	for (int tc = 1; tc <= T; tc++) {
+		printf("#%d %d\n", tc, run(Mark));
+	}
+
+	return 0;
+}
+
+
+/// jjjj 님 코드 참조
+#define R   register
+#define MAXM    10001
+#define MAXU    1000
+typedef unsigned long long ull;
+ 
+typedef struct MAIL {
+    int t_cnt;
+    ull text[10];
+} MAIL;
+MAIL MailPool[MAXM];
+int Mailcnt, Capa;
+inline MAIL *getMailPool(int a) { MailPool[a] = {}; return &MailPool[a]; }
+ 
+typedef struct USER {
+    int m_cnt, head, tail;
+    int mail[1000];
+} USER;
+USER UserPool[MAXU];
+ 
+void init(int N, int _K)
+{
+    Capa = _K;
+    Mailcnt = 1;
+    for (R int i = 0; i < N; i++)
+        UserPool[i] = {};
+}
+ 
+// sendMail("test email abcd", 0, 3, {0, 1, 2})
+void sendMail(char subject[], int uID, int cnt, int rIDs[])
+{
+    R MAIL *mp = getMailPool(Mailcnt++);
+ 
+    while (*subject) {
+        if (*subject == ' ')
+            mp->t_cnt++;
+        else {
+            mp->text[mp->t_cnt] = (mp->text[mp->t_cnt] << 5) + (*subject - 'a' + 1);
+        }
+        subject++;
+    }
+    mp->t_cnt++;
+ 
+    for (R int i = 0; i < cnt; i++) {
+        R USER *up = &UserPool[rIDs[i]];
+ 
+        if (up->m_cnt == Capa) {
+            while (!up->mail[up->head])
+                up->head++;  // find head position
+            up->mail[up->head++] = 0; // delete last one
+            up->m_cnt--;
+        }
+        up->m_cnt++;
+        up->mail[up->tail++] = Mailcnt - 1;
+    }
+}
+ 
+int getCount(int uID)
+{
+    return UserPool[uID].m_cnt;
+}
+ 
+// deleteMail(2, "test email abcd")
+int deleteMail(int uID, char subject[])
+{
+    R int scnt = 0;
+    R ull t[10] = {};
+ 
+    while (*subject) {
+        if (*subject == ' ')
+            scnt++;
+        else
+            t[scnt] = (t[scnt] << 5) + (*subject - 'a' + 1);
+        *subject++;
+    }
+    scnt++;
+ 
+    R int delcnt = 0;
+    R USER *user = &UserPool[uID];
+ 
+    for (R int i = user->head; i < user->tail; i++) {
+        if (!user->mail[i])
+            continue;
+        if (MailPool[user->mail[i]].t_cnt != scnt)
+            continue;
+ 
+        R int delflag = 1;
+        for (R int j = 0; j < MailPool[user->mail[i]].t_cnt; j++) {
+            if (MailPool[user->mail[i]].text[j] != t[j]) {
+                delflag = 0;
+                break;
+            }
+        }
+        if (delflag) {
+            user->mail[i] = 0;
+            user->m_cnt--;
+            delcnt++;
+        }
+    }
+    return delcnt;
+}
+ 
+// searchMail(2, "test")
+int searchMail(int uID, char text[])
+{
+    R int cnt = 0;
+    R ull t = {0};
+ 
+    while (*text)
+        t = (t << 5) + (*text++ - 'a' + 1);
+ 
+    R USER *user = &UserPool[uID];
+    for (R int i = user->head; i < user->tail; i++) {
+        if (!user->mail[i])
+            continue;
+ 
+        for (R int j = 0; j < MailPool[user->mail[i]].t_cnt; j++) {
+            if (MailPool[user->mail[i]].text[j] == t) {
+                cnt++;
+                break;
+            }
+        }
+    }
+    return cnt;
+}
