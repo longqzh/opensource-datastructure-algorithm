@@ -1,0 +1,384 @@
+10 100
+20
+1 8
+2 8 1 3
+2 1 2 5 6
+2 1 1 2
+2 3 2 1 6
+2 2 1 3
+2 4 2 8 2
+4 2 3 6 8 5
+4 7 0
+3 1 6
+2 8 2 2 6
+2 6 1 2
+2 2 1 7
+3 6 2
+3 6 3
+2 3 1 6
+2 6 2 2 7
+2 1 1 6
+2 3 2 5 7
+4 8 3 1 7 5
+30
+1 10
+2 6 2 1 3
+2 3 1 4
+2 1 1 5
+2 6 1 2
+2 7 2 1 8
+2 2 1 7
+3 7 2
+2 8 1 1
+2 2 1 10
+2 4 2 8 10
+2 2 1 7
+2 1 1 2
+2 6 2 4 5
+2 3 1 8
+4 4 4 1 2 5 7
+2 1 1 10
+2 1 1 4
+4 2 4 4 5 8 3
+3 10 2
+4 3 5 1 2 5 7 10
+2 2 1 4
+2 3 2 7 10
+2 1 2 9 3
+2 6 2 9 7
+2 2 1 10
+3 8 7
+2 9 2 5 8
+2 4 2 5 9
+4 10 5 6 7 8 5 9
+40
+1 20
+2 18 2 3 15
+2 1 1 10
+2 7 1 3
+2 20 2 4 11
+2 11 3 13 19 5
+2 18 2 1 20
+2 9 3 16 2 7
+2 14 1 7
+2 12 3 4 15 8
+4 15 5 1 3 4 8 20
+3 11 20
+3 7 3
+2 15 2 8 17
+2 12 3 6 16 19
+2 5 1 20
+2 4 3 18 5 11
+3 15 12
+3 9 16
+4 11 3 12 20 18
+2 14 2 18 1
+3 20 4
+4 1 5 3 4 7 15 20
+4 6 4 4 8 16 19
+3 5 4
+4 1 5 3 4 7 15 20
+4 18 5 5 7 8 10 11
+3 12 19
+4 5 4 4 13 18 19
+2 10 2 2 12
+2 11 3 20 15 17
+3 8 15
+2 11 3 18 2 7
+2 4 3 5 6 15
+4 14 5 11 3 4 9 10
+4 4 5 20 17 1 2 3
+2 19 1 8
+3 20 18
+3 7 9
+4 11 5 14 1 3 6 8
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdio.h>
+
+#define	MAXL			5
+#define MAXF			10
+
+extern void init(int N);
+extern void add(int id, int F, int ids[MAXF]);
+extern void del(int id1, int id2);
+extern int  recommend(int id, int list[MAXL]);
+
+#define INIT			1
+#define ADD				2
+#define DEL				3
+#define RECOMMEND		4
+
+static int N, M;
+
+static bool run()
+{
+	int cmd;
+	int id, F, ids[MAXF];
+	int id1, id2;
+	int len, len_a;
+	int list[MAXL], list_a[MAXL];
+	
+	bool okay;
+
+	okay = false;
+
+	scanf("%d", &M);
+
+	for (int k = 0; k < M; ++k)
+	{
+		scanf("%d", &cmd);
+		switch(cmd)
+		{
+		case INIT:
+			scanf("%d", &N);
+			init(N);
+			okay = true;
+			break;
+		case ADD:
+			scanf("%d %d", &id, &F);
+			for (int i = 0; i < F; ++i)
+				scanf("%d", &ids[i]);
+			if (okay)
+				add(id, F, ids);
+			break;
+		case DEL:
+			scanf("%d %d", &id1, &id2);
+			if (okay)
+				del(id1, id2);
+			break;
+		case RECOMMEND:
+			scanf("%d %d", &id, &len_a);
+			for (int i = 0; i < len_a; ++i)
+				scanf("%d", &list_a[i]);
+			if (okay)
+			{
+				len = recommend(id, list);
+				if (len != len_a)
+					okay = false;
+
+				for (int i = 0; okay && i < len_a; ++i)
+					if (list[i] != list_a[i])
+						okay = false;
+			}
+			break;
+		}
+	}
+	
+	return okay;
+}
+
+int main()
+{
+	int TC, MARK;
+	
+    //freopen("sample_input.txt", "r", stdin);
+
+	setbuf(stdout, NULL);
+    scanf("%d %d", &TC, &MARK);
+
+    for (int testcase = 1; testcase <= TC; ++testcase)
+	{
+		int score = run() ? MARK : 0;
+		printf("#%d %d\n", testcase, score);
+    }
+
+    return 0;
+}
+
+
+
+
+#define MAXL    5
+#define MAXF    10
+#define MAX_USER 11000
+ 
+struct FriendNode {
+    int uid;
+    FriendNode* next;
+    FriendNode* prev;
+};
+ 
+struct User {
+    int fnum;
+    FriendNode* head;
+    FriendNode* tail;
+};
+ 
+ 
+int array[MAX_USER];
+User userArray[MAX_USER];
+FriendNode friendNodeArray[400001];
+int userNum;
+int friendNodeNum;
+ 
+FriendNode* getFriendNode(int id) {
+    friendNodeArray[friendNodeNum].uid = id;
+    friendNodeArray[friendNodeNum].next = nullptr;
+    friendNodeArray[friendNodeNum].prev = nullptr;
+    return &friendNodeArray[friendNodeNum++];
+}
+ 
+void init(int N)
+{
+    friendNodeNum = 0;
+    userNum = 0;
+     
+    for (register int i = 0; i < MAX_USER; i++) {
+        if (i <= N) {
+            userArray[i].fnum = 0;
+            userArray[i].head = nullptr;
+            userArray[i].tail = nullptr;
+            array[i] = 0;
+        }
+        friendNodeArray[i].uid = 0;
+        friendNodeArray[i].next = nullptr;
+        friendNodeArray[i].prev = nullptr;
+    }
+}
+ 
+void initArray() {
+    for (register int i = 0; i < MAX_USER; i++)
+        array[i] = 0;
+}
+ 
+// userArray[uid] 유저의 친구 리스트에 fid 친구 추가
+void addFriendToList(int uid, int fid) {
+ 
+    FriendNode* tmp = getFriendNode(fid);
+    FriendNode* idx = userArray[uid].tail;
+ 
+    // 리스트에 친구가 없으면
+    if (idx == nullptr) {
+        userArray[uid].head = tmp;
+        userArray[uid].tail = tmp;
+    }
+    // 친구가 한명 있으면
+    else if (idx->next == nullptr && idx->prev == nullptr) {
+        userArray[uid].head->next = tmp;
+        tmp->prev = userArray[uid].head;
+        userArray[uid].tail = tmp;
+    }
+    // 친구가 있으면 tail 뒤에 붙여줌
+    else {
+        tmp->prev = idx;
+        idx->next = tmp;
+        userArray[uid].tail = tmp;
+    }
+    userArray[uid].fnum++;
+}
+ 
+// userArray[uid] 유저의 친구 리스트에 fid 친구 삭제
+void removeFriendFromList(int uid, int fid) {
+ 
+    FriendNode* tmp = userArray[uid].head;
+ 
+    if (tmp == nullptr) return;
+ 
+    while (tmp != nullptr) {
+ 
+        if (tmp->uid == fid) {
+            // 리스트에 노드 한개면
+            if (tmp->prev == nullptr && tmp->next == nullptr) {
+                userArray[uid].head = nullptr;
+                userArray[uid].tail = nullptr;
+                userArray[uid].fnum--;
+                break;
+            }
+            // tmp가 맨 앞이면
+            else if (tmp->prev == nullptr) {
+                tmp->next->prev = nullptr;
+                userArray[uid].head = tmp->next;
+                userArray[uid].fnum--;
+                break;
+            }
+            // tmp가 맨 뒤면
+            else if (tmp->next == nullptr) {
+                tmp->prev->next = nullptr;
+                userArray[uid].tail = tmp->prev;
+                userArray[uid].fnum--;
+                break;
+            }
+            else {
+                tmp->next->prev = tmp->prev;
+                tmp->prev->next = tmp->next;
+                userArray[uid].fnum--;
+                break;
+            }
+        }
+        tmp = tmp->next;
+    }
+}
+ 
+void add(int id, int F, int ids[MAXF])
+{
+    for (int i = 0; i < F; i++) {
+        addFriendToList(id, ids[i]);
+        addFriendToList(ids[i], id);
+    }
+}
+ 
+void del(int id1, int id2)
+{
+    removeFriendFromList(id1, id2);
+    removeFriendFromList(id2, id1);
+}
+ 
+int recommend(int id, int list[MAXL])
+{
+    initArray();
+    int tmpIdx = 0;
+    int ret = 0;
+    // userArray[id]의 친구리스트 돌면서 친구의 친구를 카운팅한다
+    FriendNode* tmp = userArray[id].head;
+ 
+    if (tmp == nullptr) return 0;
+ 
+    while (tmp != nullptr) {
+        int fid = tmp->uid;
+ 
+        FriendNode* tmp2 = userArray[fid].head;
+        while (tmp2 != nullptr) {
+            array[tmp2->uid]++;
+            tmp2 = tmp2->next;
+        }
+        tmp = tmp->next;
+    }
+ 
+ 
+    // 내친구들은 지운다
+    tmp = userArray[id].head;
+    while (tmp != nullptr) {
+        array[tmp->uid] = -999999;
+        tmp = tmp->next;
+    }
+ 
+ 
+    // 상위 5개 값 찾는다.
+    int saveIdx = 0;
+    int max = 0;
+ 
+    // 본인 제거
+    array[id] = -999999;
+    for (register int i = 0; i < 5; i++) {
+        saveIdx = 0;
+        max = 0;
+        for (register int j = 1; j < MAX_USER; j++) {
+            if (max < array[j]) {
+                max = array[j];
+                saveIdx = j;
+            }
+        }
+ 
+        if (max != 0) {
+            list[ret++] = saveIdx;
+            array[saveIdx] = -1;
+ 
+        }
+    }
+ 
+    return ret;
+}
