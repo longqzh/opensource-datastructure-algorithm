@@ -1,0 +1,378 @@
+10
+80 10 2 3
+1
+0
+2
+abaaabbabb
+2 20 2 5
+1
+2
+4
+3
+0
+bbaababaabbaabbaabaa
+3 30 3 10
+0
+1
+0
+0
+1
+1
+1
+0
+1
+0
+acabcaabbaaaacabbccccaabcabcaa
+4 50 3 20
+1
+1
+1
+0
+2
+5
+0
+1
+0
+2
+2
+1
+0
+1
+3
+4
+3
+4
+4
+2
+babcaccaabbbabbabababcabbababccabbcaabbabcccacbcca
+5 1000 5 100
+5
+7
+12
+7
+5
+7
+7
+7
+5
+13
+8
+13
+13
+20
+6
+19
+7
+7
+10
+5
+15
+2
+30
+3
+4
+15
+7
+13
+4
+3
+12
+27
+9
+15
+4
+12
+6
+10
+7
+5
+6
+7
+11
+6
+2
+1
+2
+8
+15
+9
+4
+0
+8
+18
+1
+1
+10
+3
+6
+11
+0
+8
+3
+3
+3
+3
+15
+12
+5
+0
+3
+0
+7
+6
+7
+0
+21
+0
+0
+4
+14
+2
+5
+6
+6
+4
+14
+5
+1
+4
+30
+0
+3
+28
+3
+2
+28
+8
+2
+2
+cebeebbabaebcbdeeccaecabcebccebadcbbcecddaaddaddabaeadcbacadebbebcbdeecadcddeecedbcceedabaeddcddaddaadbdedaddebaecbebaebbabbaaabcedadaaeedbdebaeecddaeddebaeddeadaddeededadebaecaebedadadbcaddebddadedcddaaecbbebaebaddaebbcaddcbaeceeacebdedeeadcbedcdadcbbeecadcebbaeeabbeedcbeebadcbbbddddaeadacebaebaedabbedcddedaddaccaeadedceeddcbaeabbdcaddebaeaaeedcebcecdcbebddaebaeeadaddddadeddadebaddaaebabaecbbebdebeadadcaebaeecebccbdeedaddabaedceeadbaddebcddaebabcaeedbddaacebcebcaddaadcebabaeadedaddcbaeabcebaeedcebaddaedebbadabaeadebccdbdeaddeaddeacebdeddaeedcddadbcbebbaecddacbedadedcdcdcbebadcbbabbacebebdeaddbcacadbbeedbbabcaedebacaebaecebbaeecbedaddadcbeeeacebaedcbaeeddadaebaececbebaeaddabcbaeadebaeeadaddadadcaddebaecbbaedadacaddedaccebaebcbebaebebadbcbecbbbabcaebeadebbadadebbdddaedaadabbebaebebaccababbaeaadaceceeaddebebcebaeeadcbebaebaddabcaeeddaddaddaeeacaebcaddadbaedadadcaedcebbbebaeddacbaedcbbeddabaeccecdccaddaaddaebccbaedcebaddcaddadedaddeeaccedcddebedadbddebaeedaddeadabaecddaeaddeedceaddcadeedb
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdio.h>
+
+extern void init(int n, char init_string[]);
+extern int change(char string_A[], char string_B[]);
+extern void result(char ret[]);
+
+static int seed = 5;  // seed can be changed
+static int pseudo_rand(void)
+{
+	seed = seed * 214013 + 2531011;
+	return (seed >> 16) & 0x7FFF;
+}
+
+#define MAXL (50005)
+#define DUMMY_LEN (5959)
+
+static int init_string_len = 0, char_type = 0, query_cnt = 0;
+static char dummy1[DUMMY_LEN];
+static char init_string[MAXL];
+static char dummy2[DUMMY_LEN];
+static char result_string[MAXL];
+static char dummy3[DUMMY_LEN];
+static char user_ans_string[MAXL];
+static char dummy4[DUMMY_LEN];
+static char string_A[4], string_B[4];
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+int main() {
+	setbuf(stdout, NULL);
+//	freopen("sample_input.txt", "r", stdin);
+	int T;
+	scanf("%d", &T);
+	int total_score = 0;
+	for (int TC = 1; TC <= T; TC++) {
+		int score = 100;
+		scanf("%d%d%d%d", &seed, &init_string_len, &char_type, &query_cnt);
+		
+		for (int i = 0; i < init_string_len; i++)
+		{
+			init_string[i] = pseudo_rand() % char_type + 'a';
+		}
+		init_string[init_string_len] = '\0';
+
+		init(init_string_len, init_string);
+
+		string_A[3] = string_B[3] = '\0';
+		for (int i = 0; i < query_cnt; i++)
+		{
+			for (int k = 0; k < 3; k++)
+			{
+				string_A[k] = pseudo_rand() % char_type + 'a';
+				string_B[k] = pseudo_rand() % char_type + 'a';
+			}
+			int user_ans = change(string_A, string_B);
+			int ans;
+			scanf("%d", &ans);
+
+			if (ans != user_ans)
+			{
+				score = 0;
+			}
+		}
+
+		result(user_ans_string);
+		scanf("%s", result_string);
+
+		for (int i = 0; i < init_string_len; i++)
+		{
+			if (result_string[i] != user_ans_string[i])
+			{
+				score = 0;
+				break;
+			}
+		}
+
+		total_score += score;
+		printf("#%d %d\n", TC, score);
+	}
+	printf("Total score : %d\n", total_score/T);
+
+	return 0;
+}
+
+
+
+#define MAXN 50000
+#define HASH_SIZE 26426
+  
+struct NODE
+{
+    int index;
+    NODE* prev;
+    NODE* next;
+} node_pool[MAXN];
+ 
+NODE table[HASH_SIZE];
+ 
+int node_cnt;
+int N;
+char data[MAXN + 1];
+  
+#define hash(str, i) ((str[i] -'a') <<10 | (str[i+1] - 'a') <<5 | (str[i+2] - 'a'))
+ 
+#define getNode() &node_pool[node_cnt++]
+void add(NODE* node, int key);
+ 
+void init(int _N, char init_string[])
+{
+    N = _N;
+    node_cnt = 0;
+    for (int i = 0; i < HASH_SIZE; i++){
+        table[i].next = 0;
+    }
+ 
+    for (int i = 0; i < N - 2; i++){
+        int key = hash(init_string, i);
+        NODE* node = getNode();
+        node->index = i;
+        add(node, key);
+    }
+ 
+    for (int i = 0; i < N; i++) {
+        data[i] = init_string[i];
+    }
+}
+ 
+void add(NODE* node, int key)
+{
+    node->next = table[key].next;
+    if (table[key].next) {
+        table[key].next->prev = node;
+    }
+    node->prev = &table[key];
+    table[key].next = node;
+}
+ 
+void del(NODE* node)
+{
+    node->prev->next = node->next;
+    if (node->next) {
+        node->next->prev = node->prev;
+    }
+}
+  
+int list[MAXN];
+ 
+void quick_sort(int first, int last)
+{
+    int pivot;
+    int i;
+    int j;
+    int temp;
+  
+    if (first < last)
+    {
+        pivot = first;
+        i = first;
+        j = last;
+  
+        while (i < j)  {
+            while (list[i] <= list[pivot] && i < last){
+                i++;
+            }
+            while (list[j] > list[pivot]){
+                j--;
+            }
+            if (i < j) {
+                temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+  
+        temp = list[pivot];
+        list[pivot] = list[j];
+        list[j] = temp;
+  
+        quick_sort(first, j - 1);
+        quick_sort(j + 1, last);
+    }
+  
+}
+ 
+int change(char string_A[], char string_B[])
+{
+    int index = -3;
+    int ans = 0;
+    int num = 0;
+    int key = hash(string_A, 0);
+    for (NODE* node = table[key].next; node; node = node->next)
+    {
+        list[num++] = node->index;
+    }
+    // sort
+    quick_sort(0, num - 1);
+    for (int i = 0; i < num; i++)
+    {
+        if (list[i] - index < 3)
+            continue;
+        index = list[i];
+        data[index] = string_B[0];
+        data[index + 1] = string_B[1];
+        data[index + 2] = string_B[2];
+        ans++;
+        for (int j = index - 2; j <= index + 2; j++)
+        {
+            if (j < 0 || j >= N - 2)
+                continue;
+            del(&node_pool[j]);
+            add(&node_pool[j], hash(data, j));
+        }
+    }
+    return ans;
+}
+void result(char ret[])
+{
+    for (int i = 0; i < N; i++)
+    {
+        ret[i] = data[i];
+    }
+}
