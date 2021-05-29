@@ -1,0 +1,320 @@
+#define R register
+#define MAX_HEAP 100000
+#define MAX_TABLE 20007
+#define LL long long
+#define MAXUSER 1000
+#define MAXMAIL 10000
+#define MAXW 10
+ 
+int mailCnt, nodeCnt, k;
+ 
+ 
+struct Mail {
+    LL name[10];
+    int textCount;
+}mail[MAXMAIL];
+ 
+struct User {
+    int num, sta, end;
+    int mailId[10000];
+}user[MAXUSER];
+ 
+struct Node {
+    int mailId;
+    Node *next;
+}nodeRaw[MAX_HEAP], hTable[MAX_TABLE];
+ 
+LL word[MAX_TABLE];
+ 
+Node* getNewNode() {
+    return &nodeRaw[nodeCnt++];
+}
+ 
+void init(int N, int K)
+{
+    // k를 전역화
+    k = K;
+    mailCnt = nodeCnt = 0;
+    for (R int i = 0; i < N; i++) {
+        user[i].num = user[i].sta = user[i].end = 0;
+    }
+    for (R int i = 0; i < MAX_TABLE; i++) {
+        hTable[i].next = nullptr;
+    }
+}
+LL name[MAXW];
+ 
+int str2ll(char* str) {
+    LL index = 0;
+    for (R int i = 0, num = 0;; i++) {
+        if (str[i] < 'a') name[num++] = index, index = 0;  // ' ' or '\0'
+        else index = (index << 5) + str[i] - 'a' + 1;
+        if (!str[i]) return num;
+    }
+}
+ 
+void sendMail(char subject[], int uID, int cnt, int rIDs[])
+{
+    int num = str2ll(subject);
+    mail[mailCnt].textCount = num;
+    for (R int i = 0; i < num; i++) {
+        mail[mailCnt].name[i] = name[i];
+    }
+    int id;
+    for (R int i = 0; i < cnt; i++) {
+        id = rIDs[i];
+        user[id].mailId[user[id].end++] = mailCnt;
+        // 수신 가능한 메일이 꽉 찼을경우
+        if(user[id].num == k) {
+            int &j = ++user[id].sta;
+            while (user[id].mailId[j] < 0) j++;
+        }
+        else user[id].num++;
+    }
+    // add  hash
+    for (R int i = 0; i < num; i++) {
+        for (R int j = name[i] % MAX_TABLE;; j = (j + 1) % MAX_TABLE) {
+            if (hTable[j].next && word[j] != name[i]) continue;
+            if (!hTable[j].next) word[j] = name[i]; 
+            Node* node = getNewNode();
+            node->mailId = mailCnt;
+            node->next = hTable[j].next;
+            hTable[j].next = node;
+            break;
+        }
+    }
+    mailCnt++;
+}
+ 
+int getCount(int uID)
+{
+    return user[uID].num;
+}
+ 
+int deleteMail(int uID, char subject[])
+{
+    int num = str2ll(subject);
+    int ans = 0, mid;
+    for (R int i = user[uID].sta; i < user[uID].end; i++) {
+        mid = user[uID].mailId[i];
+        if (mid == -1 || num != mail[mid].textCount) continue;
+        for (R int j = 0;; j++) {
+            if (j == num) {
+                user[uID].mailId[i] = -1;
+                ans++;
+                break;
+            }
+            if (mail[mid].name[j] != name[j]) break;
+        }
+    }
+    user[uID].num -= ans;
+    return ans;
+ 
+}
+//중복된 값 겁출
+bool check[MAXMAIL];
+int searchMail(int uID, char text[])
+{
+    str2ll(text);
+    int ans = 0, mid, key;
+    for (key = name[0] % MAX_TABLE;; key = (key + 1) % MAX_TABLE) {
+        if (hTable[key].next && word[key] != name[0]) continue;
+        for (R Node* node = hTable[key].next; node; node = node->next) check[node->mailId] = true;
+        break;
+    }
+    for (R int i = user[uID].sta; i < user[uID].end; i++) {
+        mid = user[uID].mailId[i];
+        if (mid == -1) continue; 
+        if (check[mid]) ans++;
+    }
+    for (R Node* node = hTable[key].next; node; node = node->next) check[node->mailId] = false;
+    return ans;
+ 
+}
+
+
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdio.h>
+
+#define INIT         0
+#define SENDMAIL     1
+#define GETCOUNT     2
+#define DELETEMAIL   3
+#define SEARCHMAIL   4
+
+extern void init(int N, int K);
+extern void sendMail(char subject[], int uID, int cnt, int rIDs[]);
+extern int getCount(int uID);
+extern int deleteMail(int uID, char subject[]);
+extern int searchMail(int uID, char text[]);
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+#define MAX_WORD 10000
+static char Word[MAX_WORD][11];
+
+static int N, W, minR, maxR, SW;
+
+static int mSeed;
+static int pseudo_rand(void)
+{
+	mSeed = mSeed * 214013 + 2531011;
+	return (mSeed >> 16) & 0x7FFF;
+}
+
+static void make_string(int seed)
+{
+	mSeed = seed;
+
+	for (int i = 0; i < W; ++i) {
+		int length = 5 + pseudo_rand() % 6;
+		for (int k = 0; k < length; ++k) {
+			Word[i][k] = 'a' + pseudo_rand() % 26;
+		}
+		Word[i][length] = '\0';
+	}
+}
+
+static void send_mail(int seed)
+{
+	char str[200];
+	int pos = 0;
+
+	mSeed = seed;
+
+	int wcnt = 1 + pseudo_rand() % SW;
+	for (int i = 0; i < wcnt; ++i) {
+		int widx = pseudo_rand() % W;
+		for (int k = 0; k < 10; ++k) {
+			if (Word[widx][k] == '\0') break;
+			str[pos++] = Word[widx][k];
+		}
+		str[pos++] = ' ';
+	}
+	str[pos - 1] = '\0';
+
+	int uid = pseudo_rand() % N;
+	int rcnt = minR + pseudo_rand() % (maxR - minR + 1);
+	int rids[50];
+	for (int i = 0; i < rcnt; ++i) {
+		rids[i] = pseudo_rand() % N;
+	}
+
+	sendMail(str, uid, rcnt, rids);
+}
+
+static int delete_mail(int uid, int seed)
+{
+	char str[200];
+	int pos = 0;
+
+	mSeed = seed;
+
+	int wcnt = 1 + pseudo_rand() % SW;
+	for (int i = 0; i < wcnt; ++i) {
+		int widx = pseudo_rand() % W;
+		for (int k = 0; k < 10; ++k) {
+			if (Word[widx][k] == '\0') break;
+			str[pos++] = Word[widx][k];
+		}
+		str[pos++] = ' ';
+	}
+	str[pos - 1] = '\0';
+
+	return deleteMail(uid, str);
+}
+
+static int run(int answer)
+{
+	int Q, K, cmd, sample, seed, param1, param2, ret;
+	char str[30];
+
+	scanf("%d %d %d %d", &Q, &sample, &N, &K);
+	if (sample == 0) {
+		scanf("%d %d %d %d %d", &W, &minR, &maxR, &SW, &seed);
+		make_string(seed);
+	}
+
+	init(N, K);
+
+	for (int i = 1; i < Q; ++i) {
+		scanf("%d", &cmd);
+		switch (cmd) {
+		case SENDMAIL:
+			if (sample == 1) {
+				int uid, rcnt;
+				int rids[10];
+				scanf("%s %d %d", str, &uid, &rcnt);
+				for (int k = 0; k < rcnt; ++k) scanf("%d", &rids[k]);
+				for (int k = 0; k < 30; ++k) {
+					if (str[k] == '\0') break;
+					if (str[k] == '_') str[k] = ' ';
+				}
+				sendMail(str, uid, rcnt, rids);
+			}
+			else {
+				scanf("%d", &seed);
+				send_mail(seed);
+			}
+			break;
+		case GETCOUNT:
+			scanf("%d %d", &param1, &param2);
+			ret = getCount(param1);
+			if (ret != param2)
+				answer = 0;
+			break;
+		case DELETEMAIL:
+			if (sample == 1) {
+				int uid;
+				scanf("%d %s %d", &param1, str, &param2);
+				for (int k = 0; k < 30; ++k) {
+					if (str[k] == '\0') break;
+					if (str[k] == '_') str[k] = ' ';
+				}
+				ret = deleteMail(param1, str);
+				if (ret != param2)
+					answer = 0;
+			}
+			else {
+				scanf("%d %d %d", &param1, &seed, &param2);
+				ret = delete_mail(param1, seed);
+				if (ret != param2)
+					answer = 0;
+			}
+			break;
+		case SEARCHMAIL:
+			scanf("%d %s %d", &param1, str, &param2);
+			ret = searchMail(param1, str);
+			if (ret != param2)
+				answer = 0;
+			break;
+		default:
+			break;
+		}
+	}
+
+	return answer;
+}
+
+int main()
+{
+	setbuf(stdout, NULL);
+	//freopen("sample_input.txt", "r", stdin);
+
+	int T, Mark;
+	scanf("%d %d", &T, &Mark);
+
+	for (int tc = 1; tc <= T; tc++) {
+		printf("#%d %d\n", tc, run(Mark));
+	}
+
+	return 0;
+}
+
+
+
