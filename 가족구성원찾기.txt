@@ -1,0 +1,666 @@
+10 100
+27
+0 sam 0
+1 smith 0 2 sam 1
+1 chris 0 2 sam 1
+1 alice 1 1 chris 1
+1 julia 1 1 alice 1
+1 mas 0 2 julia 1
+1 tony 0 0 alice 0
+1 mak 0 1 smith 0
+1 rainy 1 1 smith 0
+1 dandy 0 0 julia 1
+2 sam chris 1
+2 sam dandy 1
+2 smith alice 1
+2 mas sam 2
+2 alice sam 0
+1 joon 0 2 dandy 1
+1 frank 0 0 joon 0
+1 anne 1 0 joon 1
+1 david 0 2 anne 1
+1 munk 0 1 david 0
+1 john 0 1 alice 0
+2 david smith 4
+3 sam 0 1
+3 sam 1 4
+3 sam 2 3
+3 sam 3 1
+3 sam 4 0
+50
+0 qvkhxzzlkhuiyoj 1
+1 bqylk 1 2 qvkhxzzlkhuiyoj 1
+1 eekwqlflvadizbugiw 1 1 qvkhxzzlkhuiyoj 1
+1 geucohydfstklku 1 2 bqylk 1
+1 estjwke 0 1 qvkhxzzlkhuiyoj 1
+3 estjwke 1 1
+3 geucohydfstklku 0 0
+1 amzudfrvdtttfezny 1 1 geucohydfstklku 0
+1 kjuxnt 1 1 geucohydfstklku 0
+1 rxqgqqxlbin 0 2 bqylk 1
+1 cslmnwfprsxicrodyp 0 2 eekwqlflvadizbugiw 1
+1 rguhlxjrznkazvembvh 1 2 eekwqlflvadizbugiw 1
+1 en 1 2 qvkhxzzlkhuiyoj 1
+1 tqjcqgpepylcroaylq 1 1 en 0
+1 bipnszvn 0 1 rxqgqqxlbin 1
+1 fscpaqwsvlpmqo 1 2 bipnszvn 1
+1 fuumqnbbpnywxd 0 2 rguhlxjrznkazvembvh 1
+1 sgzphcsnv 0 1 rxqgqqxlbin 0
+1 dfqcvsnijtu 1 1 geucohydfstklku 0
+1 lsswp 1 2 rguhlxjrznkazvembvh 1
+1 sty 1 2 eekwqlflvadizbugiw 1
+1 atqnpjeaf 1 0 eekwqlflvadizbugiw 0
+2 rguhlxjrznkazvembvh cslmnwfprsxicrodyp 2
+3 lsswp 1 1
+2 rxqgqqxlbin bqylk 1
+1 jibuih 1 1 eekwqlflvadizbugiw 1
+3 sty 0 0
+2 rguhlxjrznkazvembvh bipnszvn 3
+2 en sty 3
+2 cslmnwfprsxicrodyp en 3
+1 szdpoccaluxtsv 1 1 rguhlxjrznkazvembvh 0
+1 trihjqho 0 0 fscpaqwsvlpmqo 1
+1 pyuqrll 1 1 qvkhxzzlkhuiyoj 0
+1 v 1 2 jibuih 1
+3 fuumqnbbpnywxd 0 0
+1 c 0 1 jibuih 1
+3 v 0 0
+3 en 1 1
+1 kayzz 0 1 estjwke 1
+1 zffpikamihinbgekcvb 1 1 estjwke 1
+1 rgpahqfi 0 2 rxqgqqxlbin 1
+1 ydhdaygwzglajapbz 1 1 lsswp 0
+1 vprdwpugh 1 0 estjwke 0
+3 rgpahqfi 1 1
+1 wbekdmyrs 1 0 kayzz 0
+1 ahhezrdzphdgi 0 2 bipnszvn 1
+1 jil 1 2 en 1
+1 vyrrogkirfory 1 1 c 1
+1 qewojimuptnyyrhp 1 1 en 0
+1 rytki 0 2 v 1
+300
+0 yg 1
+1 jkzvpbondk 0 0 yg 1
+1 yqrjjblxz 0 2 yg 1
+1 mqxjcupxoglobdlemf 1 0 yg 0
+1 svv 1 2 yqrjjblxz 1
+3 svv 1 1
+1 s 1 1 svv 1
+1 zroutpnrin 0 2 svv 1
+2 svv yqrjjblxz 1
+1 qaqenpcvz 1 0 zroutpnrin 1
+1 klqbtdreiopmkiu 1 2 s 1
+3 svv 1 4
+2 yg jkzvpbondk 0
+1 vusfxandzcylnw 0 1 jkzvpbondk 1
+1 hhasbbpyy 0 1 yqrjjblxz 0
+1 olowdofhob 1 1 yqrjjblxz 0
+3 s 0 1
+1 pxyzqvkheswkib 0 2 svv 1
+3 yqrjjblxz 0 1
+3 pxyzqvkheswkib 1 1
+1 rkpzovobodisewkob 0 0 pxyzqvkheswkib 0
+2 jkzvpbondk klqbtdreiopmkiu 2
+1 wlv 0 1 yg 1
+1 ferhmhnucffo 0 0 s 0
+1 fvjmrmeps 0 1 s 1
+3 yqrjjblxz 0 1
+2 klqbtdreiopmkiu zroutpnrin 3
+2 s yg 1
+1 xk 1 2 s 1
+3 xk 0 0
+1 q 0 0 vusfxandzcylnw 0
+1 vwddympunste 1 2 pxyzqvkheswkib 1
+1 aryirpwigabj 0 1 klqbtdreiopmkiu 0
+2 wlv fvjmrmeps 3
+3 s 0 1
+1 gnwmehauardiylqantm 1 1 wlv 1
+1 znkxmjtqlt 1 1 wlv 0
+1 mqhoaxlgtvy 0 0 vusfxandzcylnw 0
+2 yg s 1
+1 zhavpxievbrg 1 1 gnwmehauardiylqantm 1
+2 gnwmehauardiylqantm zroutpnrin 5
+1 nekfxketejjdadv 0 1 s 0
+2 svv zroutpnrin 1
+2 wlv zroutpnrin 4
+1 osz 1 2 klqbtdreiopmkiu 1
+1 xeepffsfzagvrfxk 0 2 jkzvpbondk 1
+1 uginsspkqpzfo 1 1 xk 0
+1 plinjg 0 0 osz 1
+1 jedatzcmzsc 0 1 gnwmehauardiylqantm 1
+3 jkzvpbondk 1 5
+1 vqdinsror 0 0 s 0
+1 rkcjjyxatmwab 1 2 gnwmehauardiylqantm 1
+1 kjxtvly 1 0 klqbtdreiopmkiu 0
+3 vwddympunste 0 0
+1 ahozrbphne 1 2 zroutpnrin 1
+3 klqbtdreiopmkiu 0 0
+1 wmewzyxxmzcdaqokrr 1 0 xeepffsfzagvrfxk 1
+1 tfraoeipphsbdggd 1 1 gnwmehauardiylqantm 0
+1 qvzppvacldkvktoke 1 1 wmewzyxxmzcdaqokrr 1
+1 gsahrqnix 0 1 ahozrbphne 0
+1 xwqwztn 1 1 yqrjjblxz 0
+2 s pxyzqvkheswkib 2
+1 zvy 0 0 vusfxandzcylnw 0
+1 juzwhrh 1 1 yqrjjblxz 0
+1 jbubjomdfpe 1 2 svv 1
+1 mul 0 0 rkcjjyxatmwab 1
+1 hteitebdeibufotqf 0 0 vusfxandzcylnw 0
+3 pxyzqvkheswkib 0 0
+1 lmrkkrdecxd 1 1 plinjg 1
+3 jedatzcmzsc 1 1
+1 zogyrgyemsaz 1 1 jkzvpbondk 1
+2 gnwmehauardiylqantm svv 4
+2 fvjmrmeps pxyzqvkheswkib 3
+1 p 0 0 yg 0
+3 vwddympunste 1 1
+2 gnwmehauardiylqantm xk 4
+1 sabuisbgozg 1 2 fvjmrmeps 1
+1 oqawmdrbkekvqxhoyu 0 1 yqrjjblxz 0
+1 ciwcoanz 1 2 zogyrgyemsaz 1
+2 zhavpxievbrg rkcjjyxatmwab 2
+1 wtpgbl 1 0 vwddympunste 0
+1 gubgc 1 1 pxyzqvkheswkib 0
+1 wkjmgqrlrhsfzwg 0 0 lmrkkrdecxd 1
+2 jkzvpbondk zroutpnrin 3
+2 svv yg 2
+1 gukqvkq 0 1 lmrkkrdecxd 1
+3 fvjmrmeps 0 0
+3 gnwmehauardiylqantm 0 0
+1 dqek 1 2 rkcjjyxatmwab 1
+1 vdlcdp 0 1 jkzvpbondk 0
+2 vusfxandzcylnw rkcjjyxatmwab 4
+1 obywozrebauckyiwdjl 1 1 lmrkkrdecxd 1
+3 qaqenpcvz 0 1
+1 lwwpdropiuyb 1 2 lmrkkrdecxd 1
+1 qlbix 0 2 jkzvpbondk 1
+1 xopkqpzorilo 0 1 klqbtdreiopmkiu 0
+1 vuziqqunpswcwurb 1 0 rkcjjyxatmwab 0
+1 lqgzn 1 2 s 1
+1 tyq 1 2 xk 1
+1 kjcxgaindygouffqd 1 0 obywozrebauckyiwdjl 0
+3 xeepffsfzagvrfxk 0 1
+1 pcdnnakq 1 0 obywozrebauckyiwdjl 0
+1 ocjwoy 0 0 zhavpxievbrg 0
+1 qcwe 0 1 lqgzn 0
+2 rkcjjyxatmwab zroutpnrin 6
+3 yg 5 3
+3 klqbtdreiopmkiu 5 4
+1 foiqzambhmkjmlefaml 1 1 lmrkkrdecxd 0
+1 mcckp 1 0 xeepffsfzagvrfxk 0
+1 gjqqvwimz 1 0 lqgzn 0
+3 xk 1 3
+1 ep 0 1 vwddympunste 0
+1 qfwsuzylkpn 1 1 rkcjjyxatmwab 0
+2 ciwcoanz osz 5
+1 hswvnygigsvsx 1 0 fvjmrmeps 1
+1 jhuwqh 1 0 fvjmrmeps 0
+1 b 1 1 s 0
+2 yqrjjblxz qaqenpcvz 2
+3 xk 1 3
+2 xk pxyzqvkheswkib 3
+1 ju 1 0 xeepffsfzagvrfxk 0
+1 fvneatmhnhntiryvrfu 1 1 obywozrebauckyiwdjl 1
+1 eiffwsiaejqg 0 2 jkzvpbondk 1
+1 uw 0 1 lqgzn 0
+1 uzz 1 1 fvjmrmeps 1
+1 jefvsequjtvlpcopykt 1 2 qaqenpcvz 1
+2 jefvsequjtvlpcopykt osz 5
+3 svv 4 5
+1 uevhg 1 0 sabuisbgozg 0
+1 puhwlmtfu 1 2 wkjmgqrlrhsfzwg 1
+2 lqgzn rkcjjyxatmwab 5
+1 aqqrwdspvrys 0 1 wkjmgqrlrhsfzwg 1
+1 sjljbfcrbrknzizj 0 0 sabuisbgozg 1
+1 us 0 0 lqgzn 1
+2 yg xeepffsfzagvrfxk 1
+3 klqbtdreiopmkiu 1 4
+3 eiffwsiaejqg 1 2
+1 jsqjq 1 0 mul 0
+1 lmececklcrgpt 0 2 jefvsequjtvlpcopykt 1
+1 zzueuurjyrjv 0 0 puhwlmtfu 1
+1 vxjshlayswqcuig 1 1 sabuisbgozg 0
+1 ptyb 1 2 yqrjjblxz 1
+3 vwddympunste 0 0
+2 yg vwddympunste 4
+1 zbgpltyo 1 1 zzueuurjyrjv 1
+2 zzueuurjyrjv jedatzcmzsc 8
+1 aszfz 0 1 zbgpltyo 1
+1 mgqgdlkbrmyielxrbz 0 2 osz 1
+1 zlqpq 1 2 ptyb 1
+1 vemckhhhutqxodym 1 2 rkcjjyxatmwab 1
+1 vghzchjleuwe 1 1 osz 0
+1 ocmhbvtd 0 1 ptyb 0
+3 vusfxandzcylnw 0 1
+1 szasxfeptxnnedh 1 1 tyq 0
+1 nqlrcwlrxxwgp 1 1 lmececklcrgpt 0
+3 zlqpq 0 0
+1 y 1 1 lwwpdropiuyb 0
+1 agcilufmrefivyj 1 1 ahozrbphne 0
+1 dechkbqub 1 1 fvneatmhnhntiryvrfu 1
+1 uflhhxbpd 1 1 fvneatmhnhntiryvrfu 0
+1 xj 0 1 fvjmrmeps 1
+1 hdjxpxzezt 1 1 dechkbqub 1
+1 sxqhqtdfe 1 2 mul 1
+1 lmmbvhgpbfyalebk 1 1 ptyb 0
+2 fvneatmhnhntiryvrfu zbgpltyo 4
+1 eclkdmbre 0 1 qlbix 0
+1 wroskpmr 0 2 qvzppvacldkvktoke 1
+2 uzz hdjxpxzezt 9
+1 teapnkwvhqemv 0 1 lqgzn 0
+1 dphumvfnlsdhrnd 1 1 rkcjjyxatmwab 0
+3 xeepffsfzagvrfxk 4 16
+1 sepstznvgufx 1 2 yg 1
+1 opgjrfzepfiwvvfxdv 0 1 ptyb 0
+1 wppqlld 1 1 fvneatmhnhntiryvrfu 0
+1 zdmigds 0 2 zbgpltyo 1
+1 nmaafcpejn 0 1 osz 1
+1 locjohikxywxmeo 0 2 dechkbqub 1
+3 wkjmgqrlrhsfzwg 0 1
+3 aszfz 1 1
+1 hpgvxmmejvjkfgmkrn 1 2 puhwlmtfu 1
+1 cpmsybbr 1 0 hdjxpxzezt 0
+1 wpgrcmcn 0 1 wmewzyxxmzcdaqokrr 1
+3 mgqgdlkbrmyielxrbz 0 0
+1 xo 0 0 vwddympunste 1
+1 cpfcotjelqpsrumjm 0 0 sabuisbgozg 0
+1 toovqk 1 0 dqek 0
+2 hswvnygigsvsx s 1
+1 qdjyxfkk 1 1 zogyrgyemsaz 1
+1 sonptbqslvgzxsxni 0 1 jedatzcmzsc 1
+1 o 0 2 plinjg 1
+1 ksrxxhzkgu 1 1 mul 1
+1 obpnrcz 1 0 sonptbqslvgzxsxni 1
+1 sxuqxyikaazgukmvpkd 0 0 wlv 0
+3 mgqgdlkbrmyielxrbz 5 21
+1 agndmefdoxclghbylg 0 2 aqqrwdspvrys 1
+3 zlqpq 0 0
+3 zlqpq 1 1
+1 whfjpgdhmlmjryu 0 0 zdmigds 0
+1 jknxsijsuxazs 0 1 jbubjomdfpe 1
+3 jknxsijsuxazs 0 1
+1 lfjktbzksbivtynfhlh 1 2 nmaafcpejn 1
+1 er 1 1 hswvnygigsvsx 1
+2 qdjyxfkk vwddympunste 6
+1 oviqlcztnhbtptvnob 0 0 qdjyxfkk 1
+1 scyrvxdcchepklvim 1 0 qaqenpcvz 0
+1 ho 0 1 wlv 1
+1 wvwbenjifxxcmdctdoc 0 1 sepstznvgufx 0
+1 ascofrpq 1 1 sxqhqtdfe 0
+1 phjcdsrprluczeuk 0 1 svv 0
+1 lvenma 0 1 yg 0
+1 ijsie 1 2 mgqgdlkbrmyielxrbz 1
+1 drfu 1 2 s 1
+1 euvxutcd 1 1 svv 0
+1 pwifbnihhd 0 2 ahozrbphne 1
+1 cxgrgt 0 2 lwwpdropiuyb 1
+1 xewspvcglbdotjy 1 2 lwwpdropiuyb 1
+1 rpleh 0 0 ahozrbphne 1
+1 vrguvxqej 1 1 zhavpxievbrg 1
+1 xbdkeotxmhxthog 1 1 uzz 1
+1 qohvmntpl 0 0 zroutpnrin 0
+2 mul xo 7
+3 er 8 3
+3 wroskpmr 6 18
+1 bjgkevzaocwjplpxoj 0 2 nmaafcpejn 1
+1 zmqlwprjkacpbqqlzd 1 1 xewspvcglbdotjy 0
+2 jefvsequjtvlpcopykt klqbtdreiopmkiu 4
+1 fsewvno 1 0 xewspvcglbdotjy 0
+2 klqbtdreiopmkiu aszfz 5
+1 jcoucqjazkmxgk 1 1 drfu 0
+1 xg 0 2 aszfz 1
+2 fvjmrmeps rkcjjyxatmwab 5
+1 twqjyfrplccrlrug 0 1 zhavpxievbrg 1
+2 nmaafcpejn vrguvxqej 6
+1 drsve 0 1 aqqrwdspvrys 1
+1 oabjxtawxcczgletc 1 1 gnwmehauardiylqantm 0
+3 agndmefdoxclghbylg 1 1
+3 pxyzqvkheswkib 0 0
+1 fhrytxtjbuepl 1 0 ahozrbphne 0
+2 xo lwwpdropiuyb 7
+1 narkgrqtjxrfbw 0 0 ksrxxhzkgu 1
+2 qdjyxfkk fvjmrmeps 4
+1 kgkxwvbgxxnzak 0 2 mul 1
+2 qvzppvacldkvktoke puhwlmtfu 7
+1 abxjzzhz 0 1 cxgrgt 1
+2 rkcjjyxatmwab uzz 6
+1 dng 1 0 mgqgdlkbrmyielxrbz 1
+1 bn 0 1 nmaafcpejn 1
+1 xlnzghh 0 2 sepstznvgufx 1
+2 pxyzqvkheswkib o 5
+1 upnoqhupmpega 0 2 twqjyfrplccrlrug 1
+1 evdkw 0 2 wlv 1
+1 rhypyxriqpl 1 2 zbgpltyo 1
+1 yomb 0 1 agndmefdoxclghbylg 0
+1 mbtlcybnqknfd 0 2 gukqvkq 1
+1 lezqweu 0 1 dng 1
+2 ahozrbphne vusfxandzcylnw 5
+1 mz 1 0 rhypyxriqpl 0
+1 bkurib 1 2 obpnrcz 1
+1 ahcjkikwmapvjz 0 1 wkjmgqrlrhsfzwg 0
+1 asaftmhjiijrlzamm 1 0 uzz 0
+1 eijrxgwstxc 0 1 lmececklcrgpt 1
+1 taj 0 1 wmewzyxxmzcdaqokrr 0
+3 jedatzcmzsc 1 6
+1 gjlflmzeakt 0 0 sjljbfcrbrknzizj 0
+1 mgqbjqousqlxllpl 0 1 o 0
+1 hl 0 2 wmewzyxxmzcdaqokrr 1
+2 lqgzn wmewzyxxmzcdaqokrr 3
+3 jbubjomdfpe 0 0
+1 rdfjookeydbxdsasqvd 1 0 ahozrbphne 0
+1 nrfwwvwkesesywxmv 1 0 aqqrwdspvrys 1
+1 ojqwjxrehhfrhqqfip 1 0 vemckhhhutqxodym 0
+1 rmgbzspueci 0 0 osz 0
+1 yoqnmsiwrusodrwxl 0 2 xj 1
+1 klbvkxvnxhaoduztv 1 0 cxgrgt 1
+1 idjypmtkpt 1 2 lqgzn 1
+2 zbgpltyo twqjyfrplccrlrug 10
+1 x 1 1 wpgrcmcn 1
+1 hocigoodnqcrmreyo 1 1 puhwlmtfu 0
+1 hwbq 0 0 wroskpmr 0
+1 qfjmkeuldopgswmx 0 1 fvjmrmeps 0
+1 tahoaudtc 0 1 hpgvxmmejvjkfgmkrn 0
+1 uyeugrjpxq 1 2 zogyrgyemsaz 1
+1 tgk 1 1 rhypyxriqpl 0
+1 tpboirlrzxswmfvtees 1 0 yoqnmsiwrusodrwxl 1
+1 oibubszrvdzyvrjjwe 1 0 svv 0
+1 fekwyodoayzxxi 1 2 ahozrbphne 1
+2 er dng 5
+1 qljz 0 0 qlbix 0
+1 dclvdwibx 1 1 xbdkeotxmhxthog 1
+1 hetljfhuhblzpxygyq 0 0 zroutpnrin 0
+2 kgkxwvbgxxnzak jbubjomdfpe 7
+1 yicrgbxtqlvouxw 1 2 obywozrebauckyiwdjl 1
+1 rkqdghmonegwkcqfy 1 2 mbtlcybnqknfd 1
+1 pxxphctjkrhdxun 1 1 xo 1
+2 hpgvxmmejvjkfgmkrn uyeugrjpxq 8
+1 aioedazopdd 0 1 zdmigds 1
+1 tlsgutgdzmqptvlupt 0 1 nmaafcpejn 0
+2 ciwcoanz drsve 8
+1 qotm 1 1 svv 0
+2 o yoqnmsiwrusodrwxl 6
+
+#include <stdio.h>
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+#define MALE   0
+#define FEMALE 1
+
+#define INIT         0
+#define ADDMEMBER    1
+#define GETDISTANCE  2
+#define COUNTMEMBER  3
+
+#define COUPLE  0
+#define PARENT  1
+#define CHILD   2
+
+#define NAME_LEN_MAX 19
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern void init(char initialMemberName[], int initialMemberSex);
+extern bool addMember(char newMemberName[], int newMemberSex, int relationship, char existingMemberName[]);
+extern int  getDistance(char nameA[], char nameB[]);
+extern int  countMember(char name[], int dist);
+
+////////////////////////////////////////////////////////////////////////////////
+
+static int score = 0;
+
+static void cmd_init()
+{
+	char initialMemberName[NAME_LEN_MAX + 1];
+	int initialMemberSex;
+
+	scanf("%s %d", initialMemberName, &initialMemberSex);
+	
+	init(initialMemberName, initialMemberSex);
+}
+
+static void cmd_addMember()
+{
+	char newMemberName[NAME_LEN_MAX + 1];
+	int newMemberSex;
+	int relationship;
+	char existingMemberName[NAME_LEN_MAX + 1];
+
+	scanf("%s %d %d %s", newMemberName, &newMemberSex, &relationship, existingMemberName);
+	
+	bool userAns = addMember(newMemberName, newMemberSex, relationship, existingMemberName);
+
+	int ans;
+	scanf("%d", &ans);
+	bool ansbool = ans == 1 ? true : false;
+	
+	if (ansbool != userAns)
+	{
+		score = 0;
+	}
+}
+
+static void cmd_getDistance()
+{
+	char nameA[NAME_LEN_MAX + 1];
+	char nameB[NAME_LEN_MAX + 1];
+
+	scanf("%s %s", nameA, nameB);
+	
+	int userAns = getDistance(nameA, nameB);
+
+	int ans;
+	scanf("%d", &ans);
+	
+	if (ans != userAns)
+	{
+		score = 0;
+	}
+}
+
+static void cmd_countMember()
+{
+	char name[NAME_LEN_MAX + 1];
+	int dist;
+
+	scanf("%s %d", name, &dist);
+	
+	int userAns = countMember(name, dist);
+
+	int ans;
+	scanf("%d", &ans);
+	
+	if (ans != userAns)
+	{
+		score = 0;
+	}
+}
+
+int main()
+{
+	setbuf(stdout, NULL);
+
+	//	freopen("sample_input.txt", "r", stdin);
+
+	int T, scoreIdx;
+	scanf("%d %d", &T, &scoreIdx);
+	
+	for (int TC = 1; TC <= T; TC++)
+	{
+		score = scoreIdx;
+		
+		int cmdL;
+		scanf("%d", &cmdL);
+		
+		for (int cmdIdx = 0; cmdIdx < cmdL; ++cmdIdx)
+		{
+			int c_num;
+			scanf("%d", &c_num);
+			
+			switch (c_num)
+			{
+			case INIT: 
+				cmd_init(); 
+				break;
+				
+			case ADDMEMBER: 
+				cmd_addMember();  
+				break;
+				
+			case GETDISTANCE: 
+				cmd_getDistance();  
+				break;
+				
+			case COUNTMEMBER: 
+				cmd_countMember();  
+				break;
+				
+			default: 
+				break;
+			}
+		}
+		
+		printf("#%d %d\n", TC, score == scoreIdx ? scoreIdx : 0);
+	}
+	return 0;
+}
+
+
+#define uint unsigned int
+#define rint register int
+#define MU 200
+#define MH 500
+ 
+struct NODE {
+    int sex, parent, couple;
+} NODEs[MU];
+int NodeCount;
+ 
+int Map[MU][MU], DisMap[MU][MU];
+ 
+uint NameCode[MH];
+int NameID[MH];
+ 
+#define getCode(code,str)   for (rint i=0; str[i]; i++) code = (code << 5) + str[i] - 96;
+ 
+void init(char name[], int sex) {
+    NodeCount = 0;
+    rint i, j;
+    for (i = 0; i < MH; i++) {
+        NameCode[i] = 0;
+    }
+    for (i = 0; i < MU; i++) {
+        for (j = 0; j < MU; j++)
+            Map[i][j] = -1;
+    }
+    for (i = 0; i < MU; i++) {
+        for (j = 0; j < MU; j++)
+            DisMap[i][j] = 0;
+    }
+ 
+    NODEs[NodeCount] = { sex, -1, -1 };
+ 
+    register uint code = 0; 
+    getCode(code, name)
+    NameCode[code % MH] = code;
+    NameID[code % MH] = NodeCount++;
+}
+ 
+void update(int idN, int idE, int relation) {
+    rint i;
+    for (i = 0; i < idE; i++) {
+        Map[idN][i] = Map[idE][i] + relation;
+        DisMap[idN][Map[idN][i]]++;
+        DisMap[i][Map[idN][i]]++;
+    }
+    Map[idN][idE] = relation;
+    DisMap[idN][relation]++;
+    DisMap[idE][relation]++;
+    for (i = idE + 1; i < idN; i++) {
+        Map[idN][i] = Map[i][idE] + relation;
+        DisMap[idN][Map[idN][i]]++;
+        DisMap[i][Map[idN][i]]++;
+    }
+}
+ 
+bool addMember(char name[], int sex, int relationship, char existingName[]) {
+    register uint codeE = 0;
+    getCode(codeE, existingName)
+    rint h = codeE % MH;
+    while (NameCode[h] != codeE)
+        h = (h + 1) % MH;
+    int idE = NameID[h];    
+ 
+    NODE *nodeE = &NODEs[idE];
+ 
+    if (relationship == 0) {
+        if ((nodeE->sex == sex) || (nodeE->couple != -1))
+            return 0;       
+ 
+        NODEs[NodeCount] = { sex, -1, idE };
+        nodeE->couple = NodeCount;
+        update(NodeCount, idE, 0);
+    }
+    else if (relationship == 1) {
+        int idP = nodeE->parent;
+        if (idP == -1) {
+            NODEs[NodeCount] = { sex, -1, -1 };
+            nodeE->parent = NodeCount;
+            update(NodeCount, idE, 1);
+        }
+        else {
+            NODE *nodeP = &NODEs[idP];
+            if ((nodeP->sex == sex) || (nodeP->couple != -1))
+                return 0;
+ 
+            NODEs[NodeCount] = { sex, -1, idP };
+            nodeP->couple = NodeCount;
+            update(NodeCount, idP, 0);
+        }
+    }
+    else {
+        NODEs[NodeCount] = { sex, idE, -1 };
+        update(NodeCount, idE, 1);
+    }
+ 
+    register uint code = 0;
+    getCode(code, name)
+    h = code % MH;
+    while (NameCode[h])
+        h = (h + 1) % MH;
+    NameCode[h] = code;
+    NameID[h] = NodeCount++;
+ 
+    return 1;
+}
+ 
+int  getDistance(char nameA[], char nameB[]) {
+    register uint code = 0;
+    getCode(code, nameA)    
+ 
+    rint h = code % MH;
+    while (NameCode[h] != code)
+        h = (h + 1) % MH;
+    int idA = NameID[h];
+ 
+    code = 0;
+    getCode(code, nameB)
+ 
+    h = code % MH;
+    while (NameCode[h] != code)
+        h = (h + 1) % MH;
+    int idB = NameID[h];
+ 
+    return (idA > idB) ? Map[idA][idB] : Map[idB][idA];
+}
+ 
+int  countMember(char name[], int dist) {
+    register uint code = 0; 
+    getCode(code, name)
+     
+    rint h = code % MH;
+    while (NameCode[h] != code)
+        h = (h + 1) % MH;
+ 
+    return DisMap[NameID[h]][dist];
+}
